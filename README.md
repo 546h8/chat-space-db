@@ -4,33 +4,34 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|username|integer|null: false|
+|name|string|null: false|
 |mail|integer|null: false|
 |password|integer|null: false|
 
 ### Association
-- has_many :post
-- has_many :user-name
+- has_many :posts
 
 
 ## postsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user-id|integer|null: false, foreign-key:true|
+|user_id|integer|null: false, foreign_key:true|
 |text|text|null: false|
-|created-at|string|null: false|
+|img|string||
+|created_at|string|null: false|
 
 ### Association
-- belongs_to :post
+- belongs_to :user
+- belongs_to :group
 
 
 ## user-groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user-id|integer|null: false, foreign-key:true|
-|group-id|integer|null: false, foreign-key:true|
+|user_id|integer|null: false, foreign_key:true|
+|group_id|integer|null: false, foreign_key:true|
 
 
 ### Association
@@ -39,16 +40,20 @@
 
 
 
+
+
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user-id|integer|null: false, foreign-key:true|
-|group-id|integer|null: false, foreign-key:true|
-|groupname|integer|null: false|
+|user_id|integer|null: false, foreign_key:true|
+|group_id|integer|null: false, foreign_key:true|
+|name|string|null: false|
 
 
 ### Association
-- has_many :user-groups
+- has_many :user_groups
+- has_many :posts
+
 
 

@@ -10,14 +10,15 @@
 
 ### Association
 - has_many :posts
-
+- has_many :user_groups
+- has_many :groups, through: :user_groups
 
 ## postsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key:true|
-|text|text|null: false|
+|user|references|null: false, foreign_key:true|
+|text|text||
 |img|string||
 |created_at|string|null: false|
 
@@ -26,12 +27,12 @@
 - belongs_to :group
 
 
-## user-groupsテーブル
+## user_groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key:true|
-|group_id|integer|null: false, foreign_key:true|
+|user|references|null: false, foreign_key:true|
+|group|references|null: false, foreign_key:true|
 
 
 ### Association
@@ -46,14 +47,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key:true|
-|group_id|integer|null: false, foreign_key:true|
+|user|references|null: false|
+|group|references|null: false|
 |name|string|null: false|
 
 
 ### Association
 - has_many :user_groups
+- has_many :users, through: :user_groups
 - has_many :posts
-
-
-
